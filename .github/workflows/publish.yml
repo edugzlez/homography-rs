@@ -1,0 +1,35 @@
+on:
+  push:
+    tags:
+      - "v*"
+
+name: 🔼 Cargo Publish
+
+jobs:
+  publish:
+    name: Publish
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+
+      - name: Publish
+        run: cargo publish --token ${{ secrets.CARGO_TOKEN }}
+        env:
+          CARGO_INCREMENTAL: 0
+
+      - name: Build docs
+        run: cargo doc --no-deps
+        env:
+          CARGO_INCREMENTAL: 0
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+        with:
+          folder: target/doc
