@@ -2,6 +2,8 @@
 name = "homography"
 version = "0.1.0"
 edition = "2021"
+description = "Homography estimation using point and line correspondences"
+license = "MIT"
 
 [dependencies]
 nalgebra = "0.33.0"
