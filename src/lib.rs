@@ -7,11 +7,11 @@
 //!
 //! ```
 //! use homography::{HomographyComputation};
-//! use homography::geo::Point;
+//! use homography::geo::{Point, Line};
 //!
 //! // Create a new instance of HomographyComputation
 //!
-//! let hc = HomographyComputation::new();
+//! let mut hc = HomographyComputation::new();
 //!
 //! // Define points
 //!
@@ -55,11 +55,11 @@ pub mod geo;
 pub mod interface;
 pub mod pairs;
 
-use functions::{solve, HomographySolution};
-use geo::{Line, Point};
-use interface::{Matrix2x9, WithRestriction};
+use crate::functions::{solve, HomographySolution};
+use crate::geo::{Line, Point};
+use crate::interface::{Matrix2x9, WithRestriction};
+use crate::pairs::LinePair;
 use nalgebra::{DMatrix, RealField, Scalar};
-use pairs::LinePair;
 
 use crate::pairs::PointPair;
 
@@ -137,10 +137,10 @@ impl HomographyComputation {
 /// # Example
 ///
 /// ```
-/// use homography_rs::{HomographyComputation};
-/// use homography_rs::geo::Point;
+/// use homography::{HomographyComputation};
+/// use homography::geo::Point;
 ///
-/// let hc = HomographyComputation::new();
+/// let mut hc = HomographyComputation::new();
 /// let p1 = Point::new(148., 337.);
 /// let p2 = Point::new(131., 516.);
 /// let p3 = Point::new(321., 486.);

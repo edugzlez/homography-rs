@@ -41,14 +41,14 @@ jobs:
           toolchain: stable
           override: true
 
-      - name: Install tarpaulin
-        run: cargo install cargo-tarpaulin
+      - name: Install llvm-cov
+        run: cargo install llvm-cov
 
-      - name: Run cargo-tarpaulin
+      - name: Run cargo-llvm-cov
         uses: actions-rs/cargo@v1
         with:
-          command: tarpaulin
-          args: --all --all-features --out Xml
+          command: llvm-cov
+          args: --cobertura --output-path "cobertura.xml"
         env:
           CARGO_INCREMENTAL: 0
 
