@@ -42,7 +42,7 @@ jobs:
           override: true
 
       - name: Install llvm-cov
-        run: cargo install llvm-cov
+        run: cargo install cargo-llvm-cov
 
       - name: Run cargo-llvm-cov
         uses: actions-rs/cargo@v1

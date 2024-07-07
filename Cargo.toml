@@ -3,6 +3,8 @@ name = "homography"
 version = "0.1.0"
 edition = "2021"
 description = "Homography estimation using point and line correspondences"
+authors = ["Eduardo González <edugonzalezvaq@gmail.com>"]
+repository = "https://github.com/edugzlez/homography-rs"
 license = "MIT"
 
 [dependencies]
