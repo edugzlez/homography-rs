@@ -1,6 +1,6 @@
 # Homography ~ Rust
 
- [![crates.io](https://img.shields.io/crates/v/homography.svg)](https://crates.io/crates/homography) [![docs.rs](https://docs.rs/homography/badge.svg)](https://docs.rs/homography) [![codecov](https://codecov.io/gh/edugzlez/homography-rs/branch/master/graph/badge.svg?token=1KGDZPWBRI)](https://codecov.io/gh/edugzlez/homography-rs)
+[![crates.io](https://img.shields.io/crates/v/homography.svg)](https://crates.io/crates/homography) [![docs.rs](https://docs.rs/homography/badge.svg)](https://docs.rs/homography) [![codecov](https://codecov.io/gh/edugzlez/homography-rs/branch/master/graph/badge.svg?token=1KGDZPWBRI)](https://codecov.io/gh/edugzlez/homography-rs)
 
 Homography is a Rust library for computing the homography matrix between two planes in a 2D space. It is based on the Direct Linear Transformation (DLT) algorithm and it is designed to be used in computer vision applications.
 
@@ -12,7 +12,7 @@ Add this to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-homography = "0.1.0"
+homography = "0.2.0"
 ```
 
 or add it directly from crates.io:
