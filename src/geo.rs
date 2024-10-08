@@ -2,29 +2,29 @@ use nalgebra::{ArrayStorage, Vector, Vector2, Vector3, U2, U3};
 
 use crate::interface::Vectorizable;
 
-pub struct Point {
-    pub x: f32,
-    pub y: f32,
+pub struct Point<T = f32> {
+    pub x: T,
+    pub y: T,
 }
 
-pub struct Line {
-    pub a: f32,
-    pub b: f32,
-    pub c: f32,
+pub struct Line<T = f32> {
+    pub a: T,
+    pub b: T,
+    pub c: T,
 }
 
-impl Point {
-    pub fn new(x: f32, y: f32) -> Self {
+impl<T> Point<T> {
+    pub fn new(x: T, y: T) -> Self {
         Point { x, y }
     }
 }
 
-impl Line {
-    pub fn new(a: f32, b: f32, c: f32) -> Self {
+impl<T: num_traits::Float> Line<T> {
+    pub fn new(a: T, b: T, c: T) -> Self {
         Line { a, b, c }
     }
 
-    pub fn from_points(p1: &Point, p2: &Point) -> Line {
+    pub fn from_points(p1: &Point<T>, p2: &Point<T>) -> Line<T> {
         let a = p2.y - p1.y;
         let b = p1.x - p2.x;
         let c = -a * p1.x - b * p1.y;

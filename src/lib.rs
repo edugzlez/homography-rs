@@ -60,6 +60,7 @@ use crate::geo::{Line, Point};
 use crate::interface::{Matrix2x9, WithRestriction};
 use crate::pairs::LinePair;
 use nalgebra::{DMatrix, RealField, Scalar};
+use num_traits::Float;
 
 use crate::pairs::PointPair;
 
@@ -71,13 +72,13 @@ pub struct HomographyRestrictions<T: Scalar> {
 
 /// Represents a homography computation, which involves finding a transformation matrix
 /// that maps points and lines from one coordinate system to another.
-pub struct HomographyComputation {
-    point_correspondences: Vec<PointPair>,
-    line_correspondences: Vec<LinePair>,
+pub struct HomographyComputation<T = f32> {
+    point_correspondences: Vec<PointPair<T>>,
+    line_correspondences: Vec<LinePair<T>>,
 }
 
 /// Implementation of HomographyComputation, which represents a computation of homography.
-impl HomographyComputation {
+impl<T: Float + Scalar> HomographyComputation<T> {
     /// Creates a new instance of HomographyComputation.
     ///
     /// # Returns
@@ -96,7 +97,7 @@ impl HomographyComputation {
     ///
     /// * `p1` - The first point in the correspondence.
     /// * `p2` - The second point in the correspondence.
-    pub fn add_point_correspondence(&mut self, p1: Point, p2: Point) {
+    pub fn add_point_correspondence(&mut self, p1: Point<T>, p2: Point<T>) {
         self.point_correspondences.push(PointPair { p1, p2 });
     }
 
@@ -106,7 +107,7 @@ impl HomographyComputation {
     ///
     /// * `l1` - The first line in the correspondence.
     /// * `l2` - The second line in the correspondence.
-    pub fn add_line_correspondence(&mut self, l1: Line, l2: Line) {
+    pub fn add_line_correspondence(&mut self, l1: Line<T>, l2: Line<T>) {
         self.line_correspondences.push(LinePair { l1, l2 });
     }
 
@@ -115,7 +116,7 @@ impl HomographyComputation {
     /// # Returns
     ///
     /// The restrictions for the homography computation.
-    pub fn get_restrictions(&self) -> HomographyRestrictions<f32> {
+    pub fn get_restrictions(&self) -> HomographyRestrictions<T> {
         let mut restrictions = HomographyRestrictions {
             restrictions: Vec::new(),
         };
@@ -189,7 +190,7 @@ mod tests {
 
     #[test]
     fn test_create_homography_computation() {
-        let hc = HomographyComputation::new();
+        let hc = HomographyComputation::<f32>::new();
         assert_eq!(hc.point_correspondences.len(), 0);
         assert_eq!(hc.line_correspondences.len(), 0);
     }
