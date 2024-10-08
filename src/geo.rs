@@ -2,11 +2,13 @@ use nalgebra::{ArrayStorage, Vector, Vector2, Vector3, U2, U3};
 
 use crate::interface::Vectorizable;
 
+#[derive(Debug, Clone)]
 pub struct Point<T = f32> {
     pub x: T,
     pub y: T,
 }
 
+#[derive(Debug, Clone)]
 pub struct Line<T = f32> {
     pub a: T,
     pub b: T,

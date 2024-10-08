@@ -6,11 +6,13 @@ use crate::{
 use nalgebra::{ArrayStorage, Matrix, Scalar, U1, U9};
 use num_traits::Float;
 
+#[derive(Debug, Clone)]
 pub struct PointPair<T = f32> {
     pub p1: Point<T>,
     pub p2: Point<T>,
 }
 
+#[derive(Debug, Clone)]
 pub struct LinePair<T = f32> {
     pub l1: Line<T>,
     pub l2: Line<T>,

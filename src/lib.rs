@@ -66,12 +66,16 @@ use crate::pairs::PointPair;
 
 /// Represents restrictions for a homography computation.
 /// The restrictions are represented as a vector of 2x9 matrices.
+
+#[derive(Debug, Clone)]
 pub struct HomographyRestrictions<T: Scalar> {
     restrictions: Vec<Matrix2x9<T>>,
 }
 
 /// Represents a homography computation, which involves finding a transformation matrix
 /// that maps points and lines from one coordinate system to another.
+
+#[derive(Debug, Clone)]
 pub struct HomographyComputation<T = f32> {
     point_correspondences: Vec<PointPair<T>>,
     line_correspondences: Vec<LinePair<T>>,
